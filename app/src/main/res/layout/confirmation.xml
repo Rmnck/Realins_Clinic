@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Confirmation"
+    android:layout_margin="10dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-9dp"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/tvTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="CONFIRMATION"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_marginBottom="24dp"/>
+
+            <!-- First Name -->
+            <TextView
+                android:id="@+id/tvFirstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="First Name"
+                android:textSize="16sp"
+                android:layout_below="@id/tvTitle"
+                android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/etFirstName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvFirstName"
+                android:inputType="textPersonName"
+                android:hint="Enter your first name" />
+
+            <!-- Last Name -->
+            <TextView
+                android:id="@+id/tvLastName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Last Name"
+                android:textSize="16sp"
+                android:layout_below="@id/etFirstName"
+                android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/etLastName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvLastName"
+                android:inputType="textPersonName"
+                android:hint="Enter your last name" />
+
+            <!-- Patient Type -->
+            <TextView
+                android:id="@+id/tvPatientType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Patient Type"
+                android:textSize="16sp"
+                android:layout_below="@id/etLastName"
+                android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/etPatientType"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvPatientType"
+                android:inputType="text"
+                android:hint="Enter patient type" />
+
+            <!-- Gender -->
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gender"
+                android:textSize="16sp"
+                android:layout_below="@id/etPatientType"
+                android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/etGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvGender"
+                android:inputType="text"
+                android:hint="Enter gender" />
+
+            <!-- Birthdate -->
+            <TextView
+                android:id="@+id/tvBirthdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Birthdate"
+                android:textSize="16sp"
+                android:layout_below="@id/etGender"
+                android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/etBirthdate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvBirthdate"
+                android:hint="DD/MM/YYYY"
+                android:focusable="false"
+                android:inputType="none" />
+
+            <!-- Age -->
+            <TextView
+                android:id="@+id/tvAge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Age"
+                android:textSize="16sp"
+                android:layout_below="@id/etBirthdate"
+                android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/etAge"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvAge"
+                android:inputType="number"
+                android:hint="Enter your age" />
+
+            <!-- Contact Number -->
+            <TextView
+                android:id="@+id/tvContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contact Number"
+                android:textSize="16sp"
+                android:layout_below="@id/etAge"
+                android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/etContact"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvContact"
+                android:inputType="phone"
+                android:hint="Enter contact number" />
+
+            <!-- Email -->
+            <TextView
+                android:id="@+id/tvEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textSize="16sp"
+                android:layout_below="@id/etContact"
+                android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvEmail"
+                android:inputType="textEmailAddress"
+                android:hint="Enter email" />
+
+            <!-- Date -->
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Date"
+                android:textSize="16sp"
+                android:layout_below="@id/etEmail"
+                android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/etDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvDate"
+                android:hint="Select Date"
+                android:focusable="false"
+                android:inputType="none" />
+
+            <!-- Time -->
+            <TextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time"
+                android:textSize="16sp"
+                android:layout_below="@id/etDate"
+                android:layout_marginTop="16dp"/>
+            <EditText
+                android:id="@+id/etTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvTime"
+                android:hint="Select Time"
+                android:focusable="false"
+                android:inputType="none" />
+
+            <!-- Buttons Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/etTime"
+                android:gravity="center_horizontal"
+                android:layout_marginTop="5dp">
+
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Cancel"
+                    android:textSize="16sp"
+                    android:contentDescription="Cancel button"
+                    android:layout_marginEnd="5dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/gray_round"
+                   />
+
+                <Button
+                    android:id="@+id/btnConfirm"
+                    android:layout_width="1dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Confirm"
+                    android:textSize="16sp"
+                    android:contentDescription="Confirm button"
+                    android:layout_marginStart="5dp"
+                    android:textColor="@color/white"
+                    android:background="@drawable/gray_round"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

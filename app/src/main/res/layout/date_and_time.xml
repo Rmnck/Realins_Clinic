@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Date_and_Time">
+
+    <RelativeLayout
+        android:id="@+id/tag"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        android:background="@color/gray">
+
+        <ImageView
+            android:id="@+id/bckimage"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/bckblack"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Select Time and Date"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:textSize="22sp"
+            android:layout_marginTop="10dp"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tag"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="-9dp"
+        android:fillViewport="true">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+
+            <DatePicker
+                android:id="@+id/calendarView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_margin="15dp"
+                android:background="@color/white"
+                android:calendarViewShown="true"/>
+
+            <TextView
+                android:id="@+id/slotsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/calendarView"
+                android:layout_centerHorizontal="true"
+                android:paddingBottom="8dp"
+                android:text="Slots Available"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <GridLayout
+                android:id="@+id/slotsGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_below="@id/slotsLabel"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="8dp"
+                android:columnCount="3"
+                android:padding="8dp"
+                android:rowCount="3">
+
+
+                <Button
+                    android:id="@+id/slot_10am"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/slot_selector"
+                    android:text="10:00 AM" />
+
+                <Button
+                    android:id="@+id/slot_1030am"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/slot_selector"
+                    android:padding="10dp"
+                    android:text="10:30 AM" />
+
+                <Button
+                    android:id="@+id/slot_11am"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/slot_selector"
+                    android:text="11:00 AM" />
+
+                <Button
+                    android:id="@+id/slot_1130am"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/slot_selector"
+                    android:text="11:30 AM" />
+
+                <Button
+                    android:id="@+id/slot_12pm"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/slot_selector"
+                    android:text="12:00 PM" />
+
+                <Button
+                    android:id="@+id/slot_1230pm"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/slot_selector"
+                    android:text="12:30 PM" />
+
+                <Button
+                    android:id="@+id/slot_330pm"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/slot_selector"
+                    android:text="03:30 PM" />
+
+                <Button
+                    android:id="@+id/slot_4pm"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/slot_selector"
+                    android:text="04:00 PM" />
+
+                <Button
+                    android:id="@+id/slot_430pm"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/slot_selector"
+                    android:text="04:30 PM" />
+
+                <Button
+                    android:id="@+id/slot_5pm"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/slot_selector"
+                    android:text="05:00 PM" />
+
+                <Button
+                    android:id="@+id/slot_530pm"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/slot_selector"
+                    android:text="05:30 PM" />
+            </GridLayout>
+
+
+            <Button
+                android:id="@+id/SaveAppointment"
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="30dp"
+                android:background="@drawable/gray_round"
+                android:text="Next"
+                android:textColor="@color/white"
+                android:textSize="16sp" />
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+</RelativeLayout>

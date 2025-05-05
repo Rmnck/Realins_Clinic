@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Patient_Reg_Form">
+
+
+    <LinearLayout
+        android:id="@+id/patienttop"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@color/cream">
+
+        <ImageView
+            android:id="@+id/backbtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/bckarrow"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Patient Registration Form"
+            android:layout_gravity="center"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="70dp"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tags"
+        android:layout_below="@id/patienttop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Give exact detail of the concerned patient."
+        android:gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tags"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Patient First Name"
+            android:textSize="16sp"/>
+
+        <EditText
+            android:id="@+id/edtFname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/cream_round"
+            android:inputType="textPersonName"
+            android:hint="Enter First Name"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Patient Last Name"
+            android:textSize="16sp"/>
+
+        <EditText
+            android:id="@+id/edtLname"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="5dp"
+            android:inputType="textPersonName"
+            android:background="@drawable/cream_round"
+            android:hint="Enter Last Name"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_below="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="10dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Patient Type"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+
+                <Spinner
+                    android:id="@+id/spinnerPatientType"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/cream_round"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingStart="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Gender"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+
+                <Spinner
+                    android:id="@+id/spinnerGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="@drawable/cream_round"/>
+            </LinearLayout>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            android:paddingTop="10dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Birthdate"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+
+
+                <Button
+                    android:id="@+id/btnPickDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/cream_round"
+                    android:textSize="16sp"
+                    android:text="dd/mm/yyyy" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:paddingStart="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Age"
+                    android:textSize="16sp"
+                    android:textColor="#000000"/>
+
+
+                <TextView
+                    android:id="@+id/tvAge"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:textSize="16sp"
+                    android:background="@drawable/cream_round"
+                    android:text="Your age will appear here" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Contact No./Contact Person"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:paddingTop="10dp"/>
+
+        <EditText
+            android:id="@+id/editTextContact"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Enter contact details"
+            android:inputType="phone"
+            android:background="@drawable/cream_round"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="16sp"
+            android:textColor="#000000"
+            android:paddingTop="10dp"/>
+
+        <EditText
+            android:id="@+id/editTextEmail"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="Enter email"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/cream_round"/>
+
+
+        <Button
+            android:id="@+id/buttonSubmitPatientRegForm"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:text="Next"
+            android:textSize="20sp"
+            android:textColor="@color/white"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/gray_round"
+            android:layout_marginTop="40dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

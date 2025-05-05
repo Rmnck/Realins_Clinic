@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "719131141750",
+    "firebase_url": "https://thesis01-fab4c-default-rtdb.firebaseio.com",
+    "project_id": "thesis01-fab4c",
+    "storage_bucket": "thesis01-fab4c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719131141750:android:e192f1ed5521b0ac672157",
+        "android_client_info": {
+          "package_name": "com.example.thesis"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAO5w0Eevg-Gkc9GQkLb-gc90SYTVk0maQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
