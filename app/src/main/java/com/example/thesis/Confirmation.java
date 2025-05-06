@@ -10,12 +10,20 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Confirmation extends AppCompatActivity {
 
     EditText etFirstName, etLastName, etPatientType, etGender, etBirthdate,
             etAge, etContact, etEmail, etDate, etTime;
 
     Button btnCancel, btnConfirm;
+
+    // Firebase Firestore instance
+    FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +70,7 @@ public class Confirmation extends AppCompatActivity {
         etTime.setText(selectedTime);
 
         // Disable editing
-      disableEditing();
-
-
+        disableEditing();
 
         // Confirm button dialog
         btnConfirm.setOnClickListener(v -> {
@@ -73,16 +79,36 @@ public class Confirmation extends AppCompatActivity {
             builder.setMessage("Are you sure you want to confirm this appointment?");
 
             builder.setPositiveButton("Yes", (dialog, which) -> {
-                Toast.makeText(Confirmation.this, "Appointment Confirmed!", Toast.LENGTH_SHORT).show();
+                // Create a map to store data
+                Map<String, Object> appointmentData = new HashMap<>();
+                appointmentData.put("firstName", fname);
+                appointmentData.put("lastName", lname);
+                appointmentData.put("contact", contact);
+                appointmentData.put("email", email);
+                appointmentData.put("patientType", patientType);
+                appointmentData.put("gender", gender);
+                appointmentData.put("birthdate", birthdate);
+                appointmentData.put("age", age);
+                appointmentData.put("appointmentDate", selectedDate);
+                appointmentData.put("appointmentTime", selectedTime);
 
-                // Proceed to next screen (change Dashboard to your desired activity)
-                Intent intent = new Intent(Confirmation.this, Dashboard.class);
-                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intent);
+                // Save the data to Firestore under the "appointments" collection
+                db.collection("appointments")
+                        .add(appointmentData) // or use .document(appointmentId).set(appointmentData) if you want to create a custom ID
+                        .addOnSuccessListener(documentReference -> {
+                            Toast.makeText(Confirmation.this, "Appointment Confirmed and Saved!", Toast.LENGTH_SHORT).show();
+
+                            // Proceed to next screen
+                            Intent intent = new Intent(Confirmation.this, Dashboard.class);
+                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            startActivity(intent);
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(Confirmation.this, "Error saving appointment!", Toast.LENGTH_SHORT).show();
+                        });
             });
 
             builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
-
             builder.create().show();
         });
 
