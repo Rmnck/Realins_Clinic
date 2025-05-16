@@ -21,13 +21,13 @@ public class Patient_Reg_Form extends AppCompatActivity {
     Spinner spinnerPatientType, spinnerGender;
     TextView tvAge;
     String selectedDate = "";
+    String selectedTime = ""; // 🔄 NEW: to store time slot
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.patient_reg_form);
 
-        // UI References
         bck = findViewById(R.id.backbtn);
         btn = findViewById(R.id.buttonSubmitPatientRegForm);
         btnPickDate = findViewById(R.id.btnPickDate);
@@ -40,14 +40,15 @@ public class Patient_Reg_Form extends AppCompatActivity {
         spinnerGender = findViewById(R.id.spinnerGender);
         tvAge = findViewById(R.id.tvAge);
 
-        // Limit the input length of the Contact field to 11 characters
+        // Set contact number filter
         InputFilter[] filters = new InputFilter[1];
         filters[0] = new InputFilter.LengthFilter(11);
         editTextContact.setFilters(filters);
 
         editTextContact.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence charSequence, int start, int count, int after) {
+            }
 
             @Override
             public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
@@ -82,6 +83,69 @@ public class Patient_Reg_Form extends AppCompatActivity {
         spinnerGender.setAdapter(genderAdapter);
 
         btnPickDate.setOnClickListener(v -> showDatePicker());
+
+        // ✅ Restore data if coming back from Date_and_Time
+        Intent intent = getIntent();
+
+        if (intent != null) {
+            String fname = intent.getStringExtra("fname");
+            String lname = intent.getStringExtra("lname");
+            String contact = intent.getStringExtra("contact");
+            String email = intent.getStringExtra("email");
+            String patientType = intent.getStringExtra("patientType");
+            String gender = intent.getStringExtra("gender");
+            String birthdate = intent.getStringExtra("birthdate");
+            String age = intent.getStringExtra("age");
+
+            selectedDate = intent.getStringExtra("selectedDate");
+            selectedTime = intent.getStringExtra("selectedTime");
+
+            if (fname != null) edtFname.setText(fname);
+            if (lname != null) edtLname.setText(lname);
+            if (contact != null) editTextContact.setText(contact);
+            if (email != null) editTextEmail.setText(email);
+
+            if (birthdate != null) {
+                selectedDate = birthdate;
+                btnPickDate.setText(birthdate);
+            } else if (selectedDate != null) {
+                btnPickDate.setText(selectedDate);
+            }
+
+            if (age != null) {
+                tvAge.setText(age);
+            } else if (selectedDate != null) {
+                // Recalculate age from selectedDate
+                try {
+                    String[] parts = selectedDate.split("/");
+                    int day = Integer.parseInt(parts[0]);
+                    int month = Integer.parseInt(parts[1]) - 1;
+                    int year = Integer.parseInt(parts[2]);
+
+                    Calendar today = Calendar.getInstance();
+                    int calculatedAge = today.get(Calendar.YEAR) - year;
+                    if (today.get(Calendar.MONTH) < month ||
+                            (today.get(Calendar.MONTH) == month && today.get(Calendar.DAY_OF_MONTH) < day)) {
+                        calculatedAge--;
+                    }
+                    tvAge.setText(String.valueOf(calculatedAge));
+                } catch (Exception e) {
+                    tvAge.setText("");
+                }
+            }
+
+            if (patientType != null) {
+                ArrayAdapter adapter = (ArrayAdapter) spinnerPatientType.getAdapter();
+                int pos = adapter.getPosition(patientType);
+                if (pos >= 0) spinnerPatientType.setSelection(pos);
+            }
+
+            if (gender != null) {
+                ArrayAdapter adapter = (ArrayAdapter) spinnerGender.getAdapter();
+                int pos = adapter.getPosition(gender);
+                if (pos >= 0) spinnerGender.setSelection(pos);
+            }
+        }
 
         btn.setOnClickListener(v -> validateAndProceed());
     }
@@ -118,82 +182,94 @@ public class Patient_Reg_Form extends AppCompatActivity {
     }
 
     private void validateAndProceed() {
-        String fname = edtFname.getText().toString().trim();
-        String lname = edtLname.getText().toString().trim();
-        String contact = editTextContact.getText().toString().trim();
-        String email = editTextEmail.getText().toString().trim();
-        String patientType = spinnerPatientType.getSelectedItem().toString();
-        String gender = spinnerGender.getSelectedItem().toString();
-        String age = tvAge.getText().toString();
+        try {
+            String fname = edtFname.getText() != null ? edtFname.getText().toString().trim() : "";
+            String lname = edtLname.getText() != null ? edtLname.getText().toString().trim() : "";
+            String contact = editTextContact.getText() != null ? editTextContact.getText().toString().trim() : "";
+            String email = editTextEmail.getText() != null ? editTextEmail.getText().toString().trim() : "";
+            String patientType = spinnerPatientType.getSelectedItem() != null ? spinnerPatientType.getSelectedItem().toString() : "Select Patient Type";
+            String gender = spinnerGender.getSelectedItem() != null ? spinnerGender.getSelectedItem().toString() : "Select Gender";
+            String age = tvAge.getText() != null ? tvAge.getText().toString() : "";
 
-        boolean hasError = false;
+            boolean hasError = false;
 
-        if (fname.isEmpty()) {
-            edtFname.setError("First name is required");
-            hasError = true;
+            if (fname.isEmpty()) {
+                edtFname.setError("First name is required");
+                hasError = true;
+            }
+
+            if (lname.isEmpty()) {
+                edtLname.setError("Last name is required");
+                hasError = true;
+            }
+
+            if (patientType.equals("Select Patient Type")) {
+                View selectedView = spinnerPatientType.getSelectedView();
+                if (selectedView instanceof TextView) {
+                    ((TextView) selectedView).setError("Please select patient type");
+                }
+            }
+
+            if (gender.equals("Select Gender")) {
+                View selectedView = spinnerGender.getSelectedView();
+                if (selectedView instanceof TextView) {
+                    ((TextView) selectedView).setError("Please select gender");
+                }
+
+            }
+
+            if (selectedDate == null || selectedDate.isEmpty()) {
+                btnPickDate.setError("Please select birthdate");
+            }
+
+            if (contact.isEmpty()) {
+                editTextContact.setError("Contact is required");
+                hasError = true;
+            } else if (contact.length() != 11) {
+                editTextContact.setError("Cellphone number must be 11 digits");
+                hasError = true;
+            } else if (!contact.startsWith("09")) {
+                editTextContact.setError("Cellphone number must start with 09");
+                hasError = true;
+            } else if (!contact.matches("\\d+")) {
+                editTextContact.setError("Cellphone number must only contain digits");
+                hasError = true;
+            }
+
+            if (email.isEmpty()) {
+                editTextEmail.setError("Email is required");
+                hasError = true;
+            } else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                editTextEmail.setError("Invalid Email format");
+                hasError = true;
+            }
+
+            if (hasError) {
+                return;
+            }
+
+            new android.app.AlertDialog.Builder(this)
+                    .setTitle("Confirmation")
+                    .setMessage("Are you sure you filled up the form correctly?")
+                    .setPositiveButton("Yes", (dialog, which) -> {
+                        Intent intent = new Intent(Patient_Reg_Form.this, Date_and_Time.class);
+                        intent.putExtra("fname", fname);
+                        intent.putExtra("lname", lname);
+                        intent.putExtra("contact", contact);
+                        intent.putExtra("email", email);
+                        intent.putExtra("patientType", patientType);
+                        intent.putExtra("gender", gender);
+                        intent.putExtra("birthdate", selectedDate);
+                        intent.putExtra("age", age);
+                        intent.putExtra("selectedDate", selectedDate);
+                        intent.putExtra("selectedTime", selectedTime);
+                        startActivity(intent);
+                    })
+                    .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
+                    .show();
+        } catch (Exception e) {
+            Toast.makeText(this, "An unexpected error occurred. Please check your inputs.", Toast.LENGTH_LONG).show();
+            e.printStackTrace(); // Log error to Logcat
         }
-
-        if (lname.isEmpty()) {
-            edtLname.setError("Last name is required");
-            hasError = true;
-        }
-
-        if (patientType.equals("Select Patient Type")) {
-            ((TextView) spinnerPatientType.getSelectedView()).setError("Please select patient type");
-            hasError = true;
-        }
-
-        if (gender.equals("Select Gender")) {
-            ((TextView) spinnerGender.getSelectedView()).setError("Please select gender");
-            hasError = true;
-        }
-
-        if (selectedDate.isEmpty()) {
-            btnPickDate.setError("Please select birthdate");
-            hasError = true;
-        }
-
-        if (contact.isEmpty()) {
-            editTextContact.setError("Contact is required");
-            hasError = true;
-        } else if (contact.length() != 11) {
-            editTextContact.setError("Cellphone number must be 11 digits");
-            hasError = true;
-        } else if (!contact.startsWith("09")) {
-            editTextContact.setError("Cellphone number must start with 09");
-            hasError = true;
-        } else if (!contact.matches("\\d+")) {
-            editTextContact.setError("Cellphone number must only contain digits");
-            hasError = true;
-        }
-
-        if (email.isEmpty()) {
-            editTextEmail.setError("Email is required");
-            hasError = true;
-        }
-
-        if (hasError) {
-            return;
-        }
-
-        // Show confirmation dialog
-        new android.app.AlertDialog.Builder(this)
-                .setTitle("Confirmation")
-                .setMessage("Are you sure you fill up the forms correctly?")
-                .setPositiveButton("Yes", (dialog, which) -> {
-                    // Pass data to Date_and_Time
-                    Intent intent = new Intent(Patient_Reg_Form.this, Date_and_Time.class);
-                    intent.putExtra("fname", fname);
-                    intent.putExtra("lname", lname);
-                    intent.putExtra("contact", contact);
-                    intent.putExtra("email", email);
-                    intent.putExtra("patientType", patientType);
-                    intent.putExtra("gender", gender);
-                    intent.putExtra("birthdate", selectedDate);
-                    intent.putExtra("age", age);
-                    startActivity(intent);
-                })
-                .setNegativeButton("No", (dialog, which) -> dialog.dismiss())
-                .show();
     }
 }

@@ -19,7 +19,7 @@ public class Start extends AppCompatActivity {
         Nxt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Start.this, Dashboard.class);
+                Intent intent = new Intent(Start.this, Terms_and_Condition.class);
                 startActivity(intent);
             }
         });

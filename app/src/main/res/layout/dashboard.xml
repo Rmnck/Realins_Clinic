@@ -4,37 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Dashboard">
+    tools:context=".Dashboard"
+    android:background="@drawable/background_rounded_f6fafd"
+    android:layout_margin="10dp">
 
     <RelativeLayout
         android:id="@+id/Rltop"
         android:layout_width="match_parent"
         android:layout_height="220dp"
-        android:background="@color/gray">
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/background_rounded_4a7fa7">
 
 
         <TextView
             android:id="@+id/txt_welcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Welcome Back"
-            android:textSize="14sp"
-            android:textColor="@android:color/white"
+            android:layout_marginLeft="30dp"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="30dp"/>
+            android:text="Welcome Back!"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
 
 
         <TextView
             android:id="@+id/txt_heading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Let's find your top doctor!"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="@android:color/white"
             android:layout_below="@id/txt_welcome"
+            android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"
-            android:layout_marginLeft="20dp"/>
+            android:text="Let's find your top doctor!"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
 
         <RelativeLayout
@@ -42,20 +46,20 @@
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:layout_below="@id/txt_heading"
+            android:layout_marginHorizontal="16dp"
             android:layout_marginTop="30dp"
             android:background="@drawable/white_search"
             android:paddingStart="16dp"
-            android:paddingEnd="16dp"
-            android:layout_marginHorizontal="16dp">
+            android:paddingEnd="16dp">
 
 
             <ImageView
                 android:id="@+id/search_icon"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                android:src="@drawable/search"
+                android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:layout_alignParentStart="true"/>
+                android:src="@drawable/search" />
 
 
             <EditText
@@ -79,7 +83,8 @@
         android:layout_below="@+id/Rltop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Categories"
+        android:text="Services"
+        android:textColor="@color/black"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"/>
 
@@ -93,74 +98,29 @@
         android:orientation="horizontal">
 
 
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
+        <Button
+            android:id="@+id/services"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="8dp"
+            android:textSize="16sp"
+            android:background="@drawable/background_rounded_0a1931"
+            android:text="Clinic Services"
+            android:layout_marginBottom="5dp"
+            android:textColor="@color/white" />
 
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/pediatric"
-                android:scaleType="centerCrop"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Pediatrician"
-                android:textSize="10sp"
-                android:textColor="@android:color/black"
-                android:gravity="center"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/lungs"
-                android:scaleType="centerCrop"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Internal Medicine"
-                android:textSize="10sp"
-                android:textColor="@android:color/black"
-                android:gravity="center"/>
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/heart"
-                android:scaleType="centerCrop"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Surgery"
-                android:textSize="10sp"
-                android:textColor="@android:color/black"
-                android:gravity="center"/>
-        </LinearLayout>
-
+        <Button
+            android:id="@+id/Laboratory"
+            android:layout_width="180dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/background_rounded_0a1931"
+            android:padding="10dp"
+            android:textSize="16sp"
+            android:text="Laboratory Test"
+            android:textColor="@color/white"/>
     </LinearLayout>
 
 
@@ -169,8 +129,9 @@
         android:layout_below="@+id/category_section"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Recommended Doctors"
+        android:text="Your Appointed Doctor"
         android:layout_marginTop="10dp"
+        android:textColor="@color/black"
         android:textSize="16sp"
         android:layout_marginLeft="10dp"/>
 
@@ -179,7 +140,7 @@
         android:id="@+id/DrRealin"
         android:layout_below="@+id/Recommended"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         android:orientation="horizontal"
         android:layout_marginTop="10dp">
 
@@ -198,6 +159,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="20dp"
+            android:background="@drawable/white_search"
             android:layout_marginLeft="10dp">
 
             <TextView
@@ -205,6 +167,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Professional Doctor"
+                android:textColor="@color/grey"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -213,16 +176,18 @@
                 android:id="@+id/RealinName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dr. Teresita Realin-Martin"
-                android:textSize="18sp"
+                android:text="Dr. Teresita Realin-Martin, MD, DPPS  "
+                android:textColor="@color/blue"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pediatrician"
+                android:textStyle="bold"
                 android:textSize="14sp"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@color/h" />
 
         </LinearLayout>
 
@@ -233,7 +198,7 @@
         android:id="@+id/DrTolentino"
         android:layout_below="@+id/DrRealin"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         android:orientation="horizontal">
 
 
@@ -251,6 +216,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="20dp"
+
             android:layout_marginLeft="10dp">
 
             <TextView
@@ -266,8 +232,9 @@
                 android:id="@+id/TolentinoName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dr. Joy Melchora Tolentino"
-                android:textSize="18sp"
+                android:text="Dr. Joy Melchora Tolentino, MD, FPCP"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -275,8 +242,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Internal Doctor"
-                android:textSize="14sp"
-                android:textColor="@android:color/darker_gray" />
+                android:textColor="@color/h"
+                android:textStyle="bold"
+                android:textSize="14sp" />
 
         </LinearLayout>
 
@@ -287,7 +255,7 @@
         android:id="@+id/DrBundal"
         android:layout_below="@+id/DrTolentino"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="90dp"
         android:orientation="horizontal">
 
 
@@ -297,6 +265,7 @@
             android:layout_height="80dp"
             android:src="@drawable/docbundal"
             android:layout_gravity="center_vertical"
+            android:textColor="@color/h"
             android:layout_marginLeft="10dp"/>
 
 
@@ -320,8 +289,9 @@
                 android:id="@+id/BundalName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dr. Laurence Owen R. Bundal"
-                android:textSize="18sp"
+                android:text="Dr. Laurence OwenR. Bundal, MD"
+                android:textColor="@color/blue"
+                android:textSize="16sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -329,7 +299,8 @@
                 android:layout_height="wrap_content"
                 android:text="Surgery"
                 android:textSize="14sp"
-                android:textColor="@android:color/darker_gray" />
+                android:textStyle="bold"
+                android:textColor="@color/h" />
 
 
         </LinearLayout>
@@ -340,15 +311,17 @@
 
     <Button
         android:id="@+id/DashboardBTN"
-        android:layout_below="@id/DrBundal"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="SET AN APPOINTMENT"
-        android:textSize="25sp"
-        android:gravity="center"
-        android:layout_marginTop="40dp"
+        android:layout_below="@id/DrBundal"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_rounded_0a1931"
+        android:gravity="center"
+        android:text="SET AN APPOINTMENT"
         android:textColor="@color/white"
-        android:background="@drawable/gray_round"/>
+        android:textSize="15dp"
+        android:textStyle="bold"
+        tools:ignore="TouchTargetSizeCheck,TextSizeCheck" />
 
 </RelativeLayout>

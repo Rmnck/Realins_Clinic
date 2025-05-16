@@ -4,8 +4,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,6 +23,7 @@ public class Confirmation extends AppCompatActivity {
             etAge, etContact, etEmail, etDate, etTime;
 
     Button btnCancel, btnConfirm;
+    ImageView bck;
 
     // Firebase Firestore instance
     FirebaseFirestore db = FirebaseFirestore.getInstance();
@@ -30,7 +33,7 @@ public class Confirmation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.confirmation);
 
-        // Initialize views
+
         etFirstName = findViewById(R.id.etFirstName);
         etLastName = findViewById(R.id.etLastName);
         etPatientType = findViewById(R.id.etPatientType);
@@ -44,8 +47,9 @@ public class Confirmation extends AppCompatActivity {
 
         btnCancel = findViewById(R.id.btnCancel);
         btnConfirm = findViewById(R.id.btnConfirm);
+        bck = findViewById(R.id.backbtn);
 
-        // Get data from Intent
+
         String fname = getIntent().getStringExtra("fname");
         String lname = getIntent().getStringExtra("lname");
         String contact = getIntent().getStringExtra("contact");
@@ -57,7 +61,7 @@ public class Confirmation extends AppCompatActivity {
         String selectedDate = getIntent().getStringExtra("selectedDate");
         String selectedTime = getIntent().getStringExtra("selectedTime");
 
-        // Set data to EditTexts
+
         etFirstName.setText(fname);
         etLastName.setText(lname);
         etPatientType.setText(patientType);
@@ -69,10 +73,10 @@ public class Confirmation extends AppCompatActivity {
         etDate.setText(selectedDate);
         etTime.setText(selectedTime);
 
-        // Disable editing
+
         disableEditing();
 
-        // Confirm button dialog
+
         btnConfirm.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(Confirmation.this);
             builder.setTitle("Confirm Appointment");
@@ -92,13 +96,10 @@ public class Confirmation extends AppCompatActivity {
                 appointmentData.put("appointmentDate", selectedDate);
                 appointmentData.put("appointmentTime", selectedTime);
 
-                // Save the data to Firestore under the "appointments" collection
                 db.collection("appointments")
-                        .add(appointmentData) // or use .document(appointmentId).set(appointmentData) if you want to create a custom ID
+                        .add(appointmentData)
                         .addOnSuccessListener(documentReference -> {
                             Toast.makeText(Confirmation.this, "Appointment Confirmed and Saved!", Toast.LENGTH_SHORT).show();
-
-                            // Proceed to next screen
                             Intent intent = new Intent(Confirmation.this, Dashboard.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
@@ -112,7 +113,7 @@ public class Confirmation extends AppCompatActivity {
             builder.create().show();
         });
 
-        // Cancel button dialog
+
         btnCancel.setOnClickListener(v -> {
             AlertDialog.Builder builder = new AlertDialog.Builder(Confirmation.this);
             builder.setTitle("Cancel Appointment");
@@ -126,8 +127,24 @@ public class Confirmation extends AppCompatActivity {
             });
 
             builder.setNegativeButton("No", (dialog, which) -> dialog.dismiss());
-
             builder.create().show();
+        });
+
+
+        bck.setOnClickListener(v -> {
+            Intent intent = new Intent(Confirmation.this, Date_and_Time.class);
+            intent.putExtra("fname", etFirstName.getText().toString());
+            intent.putExtra("lname", etLastName.getText().toString());
+            intent.putExtra("contact", etContact.getText().toString());
+            intent.putExtra("email", etEmail.getText().toString());
+            intent.putExtra("patientType", etPatientType.getText().toString());
+            intent.putExtra("gender", etGender.getText().toString());
+            intent.putExtra("birthdate", etBirthdate.getText().toString());
+            intent.putExtra("age", etAge.getText().toString());
+            intent.putExtra("selectedDate", etDate.getText().toString());
+            intent.putExtra("selectedTime", etTime.getText().toString());
+            startActivity(intent);
+            finish();
         });
     }
 

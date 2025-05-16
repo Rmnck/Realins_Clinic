@@ -13,6 +13,21 @@
         android:theme="@style/Theme.THESIS"
         tools:targetApi="31">
         <activity
+            android:name=".Terms_and_Condition"
+            android:exported="false" />
+        <activity
+            android:name=".Sign_up"
+            android:exported="false" />
+        <activity
+            android:name=".Log_in"
+            android:exported="false" />
+        <activity
+            android:name=".Laboratory_Services"
+            android:exported="false" />
+        <activity
+            android:name=".Clinic_Services"
+            android:exported="false" />
+        <activity
             android:name=".SignUp"
             android:exported="false" />
         <activity

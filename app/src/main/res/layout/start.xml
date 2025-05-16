@@ -4,40 +4,69 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Start">
-
+    android:padding="16dp"
+    android:background="@drawable/background_rounded_b3cfe5"
+    tools:context=".Start"
+    android:layout_margin="10dp">
 
     <ImageView
-        android:id="@+id/Image1"
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:src="@drawable/frontpic"
-        android:layout_centerHorizontal="true" />
+        android:id="@+id/logo"
+        android:layout_width="365dp"
+        android:layout_height="241dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/images3" />
 
     <TextView
         android:id="@+id/txtFront"
-        android:layout_below="@id/Image1"
         android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:text="Doctors Appointment"
-        android:textSize="60dp"
-        android:textStyle="italic"
-        android:gravity="center_horizontal"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="260dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="REALINS MEDICAL CLINIC"
+        android:textColor="@color/blue"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/clinicDescription"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="40dp"
+        android:text="Welcome to Realins Medical Clinic, where we provide quality healthcare services."
+        android:textAlignment="center"
+        android:textColor="@color/grey"
+        android:textSize="18sp"
+        tools:ignore="UnknownId" />
 
     <Button
         android:id="@+id/FrontBTN"
-        android:layout_below="@id/txtFront"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:text="Get Started"
-        android:textSize="25sp"
-        android:gravity="center"
-        android:layout_marginTop="70dp"
+        android:layout_below="@id/txtFront"
+        android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginStart="59dp"
+        android:layout_marginTop="190dp"
+        android:background="@drawable/background_rounded_0a1931"
+        android:gravity="center"
+        android:radius="20dp"
+        android:text="GET STARTED"
         android:textColor="@color/white"
-        android:background="@drawable/gray_round"/>
-
-
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
 
 </RelativeLayout>

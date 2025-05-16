@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 public class Dashboard extends AppCompatActivity {
     LinearLayout Realin, Tolentino, Bundal;
-    Button nxt;
+    Button nxt,service, lab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +21,25 @@ public class Dashboard extends AppCompatActivity {
         Tolentino = findViewById(R.id.DrTolentino);
         Bundal = findViewById(R.id.DrBundal);
         nxt = findViewById(R.id.DashboardBTN);
+        service = findViewById(R.id.services);
+        lab = findViewById(R.id.Laboratory);
+
+
+        service.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Dashboard.this, Clinic_Services.class);
+                startActivity(intent);
+            }
+        });
+
+        lab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Dashboard.this, Laboratory_Services.class);
+                startActivity(intent);
+            }
+        });
 
 
         Realin.setOnClickListener(new View.OnClickListener() {

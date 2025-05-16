@@ -20,9 +20,9 @@ public class Date_and_Time extends AppCompatActivity {
     GridLayout slotsGrid;
     Button lastSelectedButton = null;
 
-    // Variables for receiving data from Patient_Reg_Form
     String fname, lname, contact, email, patientType, gender, birthdate, age;
     String selectedSlot = "";
+    String selectedDate = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +34,7 @@ public class Date_and_Time extends AppCompatActivity {
         calendarView = findViewById(R.id.calendarView);
         slotsGrid = findViewById(R.id.slotsGrid);
 
-        // Receive data from Patient_Reg_Form
+        // Retrieve intent extras
         Intent intent = getIntent();
         fname = intent.getStringExtra("fname");
         lname = intent.getStringExtra("lname");
@@ -44,35 +44,46 @@ public class Date_and_Time extends AppCompatActivity {
         gender = intent.getStringExtra("gender");
         birthdate = intent.getStringExtra("birthdate");
         age = intent.getStringExtra("age");
+        selectedDate = intent.getStringExtra("selectedDate");
+        selectedSlot = intent.getStringExtra("selectedTime");
 
-        // Get current date and disable past dates
+        // Limit calendar to today through one month from today
         Calendar calendar = Calendar.getInstance();
-        long today = calendar.getTimeInMillis();
-        calendarView.setMinDate(today);
-
-        // Set max selectable date to 1 month from today
+        calendarView.setMinDate(calendar.getTimeInMillis());
         calendar.add(Calendar.MONTH, 1);
-        long oneMonthLater = calendar.getTimeInMillis();
-        calendarView.setMaxDate(oneMonthLater);
+        calendarView.setMaxDate(calendar.getTimeInMillis());
 
-        // Handle time slot selection
+        // If returning from confirmation, restore previously selected date
+        if (selectedDate != null && !selectedDate.isEmpty()) {
+            String[] parts = selectedDate.split("/");
+            if (parts.length == 3) {
+                int day = Integer.parseInt(parts[0]);
+                int month = Integer.parseInt(parts[1]) - 1;
+                int year = Integer.parseInt(parts[2]);
+                calendarView.updateDate(year, month, day);
+            }
+        }
+
+        // Time slot selection
         for (int i = 0; i < slotsGrid.getChildCount(); i++) {
-            final Button button = (Button) slotsGrid.getChildAt(i);
-            button.setOnClickListener(v -> {
-                // Change background of selected button
-                button.setBackgroundResource(R.drawable.gray_round);
+            final Button slotButton = (Button) slotsGrid.getChildAt(i);
 
-                // Reset previously selected button
-                if (lastSelectedButton != null && lastSelectedButton != button) {
+            if (selectedSlot != null && selectedSlot.equals(slotButton.getText().toString())) {
+                slotButton.setBackgroundResource(R.drawable.gray_round);
+                lastSelectedButton = slotButton;
+            }
+
+            slotButton.setOnClickListener(v -> {
+                slotButton.setBackgroundResource(R.drawable.gray_round);
+                if (lastSelectedButton != null && lastSelectedButton != slotButton) {
                     lastSelectedButton.setBackgroundResource(R.drawable.slot_selector);
                 }
-
-                lastSelectedButton = button;
-                selectedSlot = button.getText().toString(); // Store selected time
+                lastSelectedButton = slotButton;
+                selectedSlot = slotButton.getText().toString();
             });
         }
 
-        // Back button → navigate back to Patient_Reg_Form with preserved data
+        // Handle back button
         bck.setOnClickListener(v -> {
             Intent backIntent = new Intent(Date_and_Time.this, Patient_Reg_Form.class);
             backIntent.putExtra("fname", fname);
@@ -83,20 +94,20 @@ public class Date_and_Time extends AppCompatActivity {
             backIntent.putExtra("gender", gender);
             backIntent.putExtra("birthdate", birthdate);
             backIntent.putExtra("age", age);
+            backIntent.putExtra("selectedDate", selectedDate);
+            backIntent.putExtra("selectedTime", selectedSlot);
             startActivity(backIntent);
             finish();
         });
 
-        // Next button → go to Confirmation activity with all data
+        // Handle next/save button
         nxt.setOnClickListener(v -> {
             int day = calendarView.getDayOfMonth();
-            int month = calendarView.getMonth() + 1; // Months are 0-indexed
+            int month = calendarView.getMonth() + 1;
             int year = calendarView.getYear();
+            String dateToSend = day + "/" + month + "/" + year;
 
-            String selectedDate = day + "/" + month + "/" + year;
-
-            // Validate date and time selection
-            if (selectedSlot.isEmpty()) {
+            if (selectedSlot == null || selectedSlot.isEmpty()) {
                 Toast.makeText(Date_and_Time.this, "Please select a time slot", Toast.LENGTH_SHORT).show();
                 return;
             }
@@ -110,9 +121,8 @@ public class Date_and_Time extends AppCompatActivity {
             confirmIntent.putExtra("gender", gender);
             confirmIntent.putExtra("birthdate", birthdate);
             confirmIntent.putExtra("age", age);
-            confirmIntent.putExtra("selectedDate", selectedDate);
+            confirmIntent.putExtra("selectedDate", dateToSend);
             confirmIntent.putExtra("selectedTime", selectedSlot);
-
             startActivity(confirmIntent);
         });
     }

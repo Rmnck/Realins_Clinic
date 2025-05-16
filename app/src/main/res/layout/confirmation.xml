@@ -5,7 +5,47 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Confirmation"
+    android:background="@drawable/background_rounded_f6fafd"
     android:layout_margin="10dp">
+
+
+    <RelativeLayout
+        android:id="@+id/tag"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:background="@drawable/background_rounded_4a7fa7">
+
+        <ImageView
+            android:id="@+id/backbtn"
+            android:layout_width="40dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="5dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/bckarrow"
+            tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="-1dp"
+            android:gravity="center"
+            android:text="CONFIRMATION"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+
 
     <ScrollView
         android:layout_width="match_parent"
@@ -13,22 +53,17 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="-9dp"
-        android:fillViewport="true">
+        android:fillViewport="true"
+        android:layout_below="@id/tag">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <!-- Title -->
-            <TextView
-                android:id="@+id/tvTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="CONFIRMATION"
-                android:textSize="24sp"
-                android:textStyle="bold"
-                android:gravity="center"
-                android:layout_marginBottom="24dp"/>
+
+
+
 
             <!-- First Name -->
             <TextView
@@ -37,15 +72,18 @@
                 android:layout_height="wrap_content"
                 android:text="First Name"
                 android:textSize="16sp"
-                android:layout_below="@id/tvTitle"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:textColor="@color/blue"/>
             <EditText
                 android:id="@+id/etFirstName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_below="@id/tvFirstName"
                 android:inputType="textPersonName"
-                android:hint="Enter your first name" />
+                android:hint="Enter your first name"
+                android:background="@drawable/background_rounded_b3cfe5"/>
 
             <!-- Last Name -->
             <TextView
@@ -55,14 +93,18 @@
                 android:text="Last Name"
                 android:textSize="16sp"
                 android:layout_below="@id/etFirstName"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:textColor="@color/blue"/>
             <EditText
                 android:id="@+id/etLastName"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:layout_below="@id/tvLastName"
                 android:inputType="textPersonName"
-                android:hint="Enter your last name" />
+                android:hint="Enter your last name"
+                android:background="@drawable/background_rounded_b3cfe5"/>
 
             <!-- Patient Type -->
             <TextView
@@ -72,16 +114,22 @@
                 android:text="Patient Type"
                 android:textSize="16sp"
                 android:layout_below="@id/etLastName"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:textColor="@color/blue"/>
+
+            <!-- Gender -->
             <EditText
                 android:id="@+id/etPatientType"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@id/tvPatientType"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:hint="Enter patient type"
                 android:inputType="text"
-                android:hint="Enter patient type" />
+                android:background="@drawable/background_rounded_b3cfe5"/>
 
-            <!-- Gender -->
             <TextView
                 android:id="@+id/tvGender"
                 android:layout_width="wrap_content"
@@ -89,14 +137,18 @@
                 android:text="Gender"
                 android:textSize="16sp"
                 android:layout_below="@id/etPatientType"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:textColor="@color/blue"/>
             <EditText
                 android:id="@+id/etGender"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@id/tvGender"
                 android:inputType="text"
-                android:hint="Enter gender" />
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:hint="Enter gender"
+                android:background="@drawable/background_rounded_b3cfe5"/>
 
             <!-- Birthdate -->
             <TextView
@@ -106,15 +158,19 @@
                 android:text="Birthdate"
                 android:textSize="16sp"
                 android:layout_below="@id/etGender"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:textColor="@color/blue"/>
             <EditText
                 android:id="@+id/etBirthdate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@id/tvBirthdate"
                 android:hint="DD/MM/YYYY"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
                 android:focusable="false"
-                android:inputType="none" />
+                android:inputType="none"
+                android:background="@drawable/background_rounded_b3cfe5"/>
 
             <!-- Age -->
             <TextView
@@ -124,16 +180,23 @@
                 android:text="Age"
                 android:textSize="16sp"
                 android:layout_below="@id/etBirthdate"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:textColor="@color/blue"/>
+
+            <!-- Contact Number -->
             <EditText
                 android:id="@+id/etAge"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@id/tvAge"
-                android:inputType="number"
-                android:hint="Enter your age" />
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="1dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/background_rounded_b3cfe5"
+                android:hint="Enter your age"
+                android:inputType="number" />
 
-            <!-- Contact Number -->
             <TextView
                 android:id="@+id/tvContact"
                 android:layout_width="wrap_content"
@@ -141,14 +204,18 @@
                 android:text="Contact Number"
                 android:textSize="16sp"
                 android:layout_below="@id/etAge"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:textColor="@color/blue"/>
             <EditText
                 android:id="@+id/etContact"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@id/tvContact"
                 android:inputType="phone"
-                android:hint="Enter contact number" />
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:hint="Enter contact number"
+                android:background="@drawable/background_rounded_b3cfe5"/>
 
             <!-- Email -->
             <TextView
@@ -158,14 +225,18 @@
                 android:text="Email"
                 android:textSize="16sp"
                 android:layout_below="@id/etContact"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:textColor="@color/blue"/>
             <EditText
                 android:id="@+id/etEmail"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@id/tvEmail"
                 android:inputType="textEmailAddress"
-                android:hint="Enter email" />
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:hint="Enter email"
+                android:background="@drawable/background_rounded_b3cfe5"/>
 
             <!-- Date -->
             <TextView
@@ -175,15 +246,19 @@
                 android:text="Date"
                 android:textSize="16sp"
                 android:layout_below="@id/etEmail"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:textColor="@color/blue"/>
             <EditText
                 android:id="@+id/etDate"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@id/tvDate"
                 android:hint="Select Date"
                 android:focusable="false"
-                android:inputType="none" />
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:inputType="none"
+                android:background="@drawable/background_rounded_b3cfe5"/>
 
             <!-- Time -->
             <TextView
@@ -193,15 +268,19 @@
                 android:text="Time"
                 android:textSize="16sp"
                 android:layout_below="@id/etDate"
-                android:layout_marginTop="16dp"/>
+                android:layout_marginTop="16dp"
+                android:textColor="@color/blue"/>
             <EditText
                 android:id="@+id/etTime"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="50dp"
                 android:layout_below="@id/tvTime"
                 android:hint="Select Time"
                 android:focusable="false"
-                android:inputType="none" />
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="10dp"
+                android:inputType="none"
+                android:background="@drawable/background_rounded_b3cfe5"/>
 
             <!-- Buttons Row -->
             <LinearLayout
@@ -210,7 +289,8 @@
                 android:orientation="horizontal"
                 android:layout_below="@id/etTime"
                 android:gravity="center_horizontal"
-                android:layout_marginTop="5dp">
+                android:layout_marginTop="15dp"
+                android:paddingBottom="20dp">
 
                 <Button
                     android:id="@+id/btnCancel"
@@ -222,7 +302,7 @@
                     android:contentDescription="Cancel button"
                     android:layout_marginEnd="5dp"
                     android:textColor="@color/white"
-                    android:background="@drawable/gray_round"
+                    android:background="@drawable/background_rounded_4a7fa7"
                    />
 
                 <Button
@@ -235,7 +315,7 @@
                     android:contentDescription="Confirm button"
                     android:layout_marginStart="5dp"
                     android:textColor="@color/white"
-                    android:background="@drawable/gray_round"/>
+                    android:background="@drawable/background_rounded_1a3d63"/>
             </LinearLayout>
 
         </RelativeLayout>

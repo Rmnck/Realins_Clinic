@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Info_Bundal"
+    android:background="@drawable/background_rounded_f6fafd"
     android:layout_margin="10dp">
 
 
@@ -12,6 +13,7 @@
         android:id="@+id/info_Bundal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
         <!-- Back Button and Schedule -->
@@ -29,12 +31,6 @@
                 android:src="@drawable/bckblack"
                 android:layout_marginEnd="8dp"/>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Back"
-                android:textColor="@color/black"
-                android:textStyle="bold"/>
         </LinearLayout>
 
 
@@ -49,16 +45,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dr. Laurence OwenR. Bundal"
+            android:text="Dr. Laurence OwenR. Bundal, MD"
             android:textStyle="bold"
             android:textSize="18sp"
+            android:textColor="@color/blue"
             android:layout_gravity="center"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Surgery"
-            android:textColor="@color/gray"
+            android:text="General Surgery"
+            android:textColor="@color/grey"
             android:layout_gravity="center"/>
 
 
@@ -72,17 +69,19 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="10 years experience"
-                android:background="@drawable/cream_round"
+                android:text="8 years experience"
+                android:textColor="@color/white"
+                android:background="@drawable/background_rounded_4a7fa7"
                 android:padding="8dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mon-Sat / 11:00AM - 4:00PM"
-                android:background="@drawable/cream_round"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/background_rounded_1a3d63"
                 android:padding="8dp"
-                android:layout_marginStart="8dp"/>
+                android:textColor="@color/white"
+                android:text="Fri / 8:00AM - 10:00AM" />
         </LinearLayout>
 
 
@@ -90,9 +89,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Focus: The impact of hormonal imbalances on skin conditions, specializing in acne, hirsutism, and other skin disorders."
-            android:background="@drawable/cream_round"
+            android:background="@drawable/background_rounded_b3cfe5"
             android:padding="12dp"
             android:textStyle="bold"
+            android:textColor="@color/grey"
             android:layout_marginTop="16dp"/>
 
 
@@ -100,6 +100,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="12dp"
+            android:textColor="@color/grey"
+            android:background="@drawable/background_rounded_b3cfe5"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."
             android:layout_marginTop="16dp"/>
 
@@ -109,6 +111,7 @@
             android:layout_height="wrap_content"
             android:text="Career Path"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginTop="16dp"/>
 
         <TextView
@@ -116,6 +119,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
             android:padding="12dp"
+            android:textColor="@color/grey"
+            android:background="@drawable/background_rounded_b3cfe5"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."/>
 
 
@@ -124,12 +129,15 @@
             android:layout_height="wrap_content"
             android:text="Highlights"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginTop="16dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:textColor="@color/grey"
+            android:background="@drawable/background_rounded_b3cfe5"
             android:padding="12dp"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua..."/>
 

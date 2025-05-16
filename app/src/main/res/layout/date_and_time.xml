@@ -4,32 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Date_and_Time">
+    tools:context=".Date_and_Time"
+    android:background="@drawable/background_rounded_f6fafd"
+    android:layout_margin="10dp">
 
     <RelativeLayout
         android:id="@+id/tag"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="@color/gray">
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="0dp"
+        android:background="@drawable/background_rounded_4a7fa7"
+        android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/bckimage"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:src="@drawable/bckblack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="10dp"/>
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/bckarrow" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="15dp"
             android:text="Select Time and Date"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_centerHorizontal="true"
             android:textSize="22sp"
-            android:layout_marginTop="10dp"/>
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -57,9 +64,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
-                android:layout_margin="15dp"
-                android:background="@color/white"
-                android:calendarViewShown="true"/>
+                android:layout_margin="20dp"
+                android:calendarViewShown="true" />
 
             <TextView
                 android:id="@+id/slotsLabel"
@@ -70,7 +76,7 @@
                 android:paddingBottom="8dp"
                 android:text="Slots Available"
                 android:textColor="@color/black"
-                android:textSize="16sp"
+                android:textSize="15sp"
                 android:textStyle="bold" />
 
 
@@ -180,12 +186,14 @@
             <Button
                 android:id="@+id/SaveAppointment"
                 android:layout_width="150dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="30dp"
-                android:background="@drawable/gray_round"
+                android:background="@drawable/background_rounded_0a1931"
                 android:text="Next"
                 android:textColor="@color/white"
-                android:textSize="16sp" />
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="25dp"/>
 
 
         </LinearLayout>
